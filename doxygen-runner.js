@@ -94,6 +94,13 @@ class DoxygenRunner {
         try {
             doxygen.run(this.options.doxygenConfigFile)
         } catch (error) {
+            const missingLibsErrorMessage = "error while loading shared libraries:"
+
+            if(error.message.includes(missingLibsErrorMessage)) {
+                const matches = error.message.match(new RegExp(`${missingLibsErrorMessage} (.+)`))
+                console.error(`❌ Failed to run Doxygen due to missing libraries: ${matches.length > 1 ? matches[1] : "unknown"}`)
+                process.exit(1)
+            }
             validationMessages = this.extractValidationMessages(error)
         }
 
