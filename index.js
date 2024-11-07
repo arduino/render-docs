@@ -39,6 +39,7 @@ program.option('-a, --access-level <level>', 'Minimum access level to be conside
 program.option('-s, --show-access-modifiers', 'Show access modifiers in documentation', false)
 program.option('-f, --fail-on-warnings', 'Fail when undocumented code is found', false)
 program.option('-d, --debug', 'Enable debugging mode with additional output', false)
+program.option('-c, --classes', 'Output Classes To Their Own Files', false)
 program.option('-r, --resolve-issues [api-key]', 'Automatically fix issues in the documentation with OpenAI', false)
 
 if (process.argv.length < 3) {
@@ -109,6 +110,7 @@ const moxygenOptions = {
     language: PROGRAMMING_LANGUAGE,            /** Programming language **/
     templates: TEMPLATES_FOLDER,     /** Templates directory **/
     relativePaths: true,
+    classes: commandOptions.classes,
     accessLevel: commandOptions.accessLevel,
     showAccessModifiers: commandOptions.showAccessModifiers,
     logfile: commandOptions.debug ? MOXYGEN_LOGFILE : undefined
