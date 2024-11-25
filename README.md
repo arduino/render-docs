@@ -49,8 +49,8 @@ For this to work you will have to create an [OpenAI API key](https://platform.op
 
 ## ⚙️ Installation
 
-The easiest way is to use npm: `npm install github:sebromero/render-docs --no-save --silent`
-You can then call `npx render-docs` to run the command. Alternatively you can install the tool globally using `npm install -g github:sebromero/render-docs` and then run it with `render-docs`. A local installation is advisable whenever possibe as it avoids any version conflicts with this tool and its dependencies that may be used by other tools too.
+The easiest way is to use npm: `npm install github:arduino/render-docs --no-save --silent`
+You can then call `npx render-docs` to run the command. Alternatively you can install the tool globally using `npm install -g github:arduino/render-docs` and then run it with `render-docs`. A local installation is advisable whenever possibe as it avoids any version conflicts with this tool and its dependencies that may be used by other tools too.
 
 > [!IMPORTANT]  
 > On Linux you will need to manually install the depenencies required by doxygen which is used under the hood. To do so run the following commands:
@@ -76,7 +76,7 @@ For debugging purposes there is a VSCode launch config available.
 
 ## 🐛 Reporting Issues
 
-If you encounter any issue, please open a bug report [here](https://github.com/sebromero/render-docs/issues). 
+If you encounter any issue, please open a bug report [here](https://github.com/arduino/render-docs/issues). 
 
 ## 💪 Contributing
 
