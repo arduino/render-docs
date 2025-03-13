@@ -69,7 +69,7 @@ class DoxygenRunner {
 
         // Filter out empty messages and allow only warnings related to documentation issues
         const filteredMessages = errorMessages.filter(message => {
-            const warningMessageRegex = /^(?:[^:\n]+):(?:\d+): warning: (?:.+)$/
+            const warningMessageRegex = /^(?:[^:\n]+):(?:\d+): (?:warning|error): (?:.+)$/
             return message.match(warningMessageRegex)
         })
 
