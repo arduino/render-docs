@@ -12,7 +12,7 @@ CLI tool to generate markdown documentation from C++ code using Doxygen
 
 Arguments:
   source                       Source folder containing the .h files
-  target                       Target folder or file for the markdown documentation
+  target                       Target file / pattern for the markdown documentation.
 
 Options:
   -V, --version                   output the version number
@@ -27,6 +27,8 @@ Options:
 ```
 
 You can also specify single files as input so only those will be processed (e.g. `render-docs Folder.h ./api.md`)
+
+If the target path contains `%s` one file will be generated per class. In that case `%s` will be replaced with the class name.
 
 > [!TIP]
 > If you don't want to render any output but only want to check the documentation for completeness, you can omit the second argument and add the `-f` option (e.g. `render-docs Folder.h -f`).

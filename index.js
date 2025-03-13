@@ -33,7 +33,7 @@ program
   .usage('<sourc folder> [target folder] [options]')
 
 program.argument('<source>', 'Source folder containing the .h files')
-program.argument('[target]', 'Target folder or file for the markdown documentation')
+program.argument('[target]', 'Target file path / pattern for the markdown documentation (e.g. api.md or %s.md)')
 program.option('-e, --exclude <pattern>', 'Pattern for excluding files (e.g. "*/test/*")')
 program.option('-c, --include-cpp', 'Process .cpp files when rendering the documentation')
 program.option('-a, --access-level <level>', 'Minimum access level to be considered (public, private)', "public")
@@ -113,6 +113,7 @@ const moxygenOptions = {
     relativePaths: true,
     accessLevel: commandOptions.accessLevel,
     showAccessModifiers: commandOptions.showAccessModifiers,
+    classes: outputFile.includes("%s"),
     logfile: commandOptions.debug ? MOXYGEN_LOGFILE : undefined
 };
 
