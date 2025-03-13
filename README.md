@@ -16,7 +16,7 @@ Arguments:
 
 Options:
   -V, --version                   output the version number
-  -e, --exclude <string>          Pattern for excluding files (e.g. "*/test/*")
+  -e, --exclude <string>          Pattern for excluding files (e.g. "*/test/* internal.h")
   -c, --include-cpp               Process .cpp files when rendering the documentation.
   -a, --access-level <string>     Minimum access level to be considered (public, private) (default: "public")
   -s, --show-access-modifiers     how access modifiers in documentation

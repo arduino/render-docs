@@ -14,6 +14,7 @@ import process from "process";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const DOXYGEN_VERSION = "1.13.2"; // Defines the version of Doxygen to download
 const OPENAI_API_KEY_ENV_VAR = "OPENAI_API_KEY"
 const TEMPLATES_FOLDER = path.join(__dirname, "templates/cpp")
 const PROGRAMMING_LANGUAGE = "cpp"
@@ -66,7 +67,8 @@ const doxygenOptions = {
     "fileExtensions": fileExtensions,
     "exclude": commandOptions.exclude,
     "accessLevel": commandOptions.accessLevel,
-    "debug": commandOptions.debug
+    "debug": commandOptions.debug,
+    "doxygenVersion": DOXYGEN_VERSION
 }
 
 const doxygenRunner = new DoxygenRunner(doxygenOptions)
@@ -143,3 +145,7 @@ if(validationMessages.length > 0){
     console.warn(`😬 ${validationMessages.length} issues were found in the documentation. Please check the output.`)
 }
 console.log("✅ Done")
+// Explicitly exit the process to avoid hanging.
+// When doxygen gets downloaded as part of the process
+// it sometimes doesn't exit the child processes properly.
+process.exit(0);

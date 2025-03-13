@@ -9,9 +9,9 @@ class DoxygenRunner {
     }
 
     async checkInstallation(){
-        if(!doxygen.isDoxygenExecutableInstalled()) {
+        if(!doxygen.isDoxygenExecutableInstalled(this.options.doxygenVersion)) {
             console.log(`Doxygen is not installed. Downloading ...`)
-            const success = await doxygen.downloadVersion();
+            const success = await doxygen.downloadVersion(this.options.doxygenVersion);
             if (!success) {
                 console.error("Failed to download Doxygen")
                 process.exit(1)
@@ -69,7 +69,7 @@ class DoxygenRunner {
 
         // Filter out empty messages and allow only warnings related to documentation issues
         const filteredMessages = errorMessages.filter(message => {
-            const warningMessageRegex = /^(?:[^:\n]+):(?:\d+): warning: (?:.+)$/
+            const warningMessageRegex = /^(?:[^:\n]+):(?:\d+): (?:warning|error): (?:.+)$/
             return message.match(warningMessageRegex)
         })
 
@@ -92,7 +92,7 @@ class DoxygenRunner {
         await this.checkInstallation()
         this.prepare()
         try {
-            doxygen.run(this.options.doxygenConfigFile)
+            doxygen.run(this.options.doxygenConfigFile, this.options.doxygenVersion)
         } catch (error) {
             const missingLibsErrorMessage = "error while loading shared libraries:"
 
