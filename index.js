@@ -145,3 +145,7 @@ if(validationMessages.length > 0){
     console.warn(`😬 ${validationMessages.length} issues were found in the documentation. Please check the output.`)
 }
 console.log("✅ Done")
+// Explicitly exit the process to avoid hanging.
+// When doxygen gets downloaded as part of the process
+// it sometimes doesn't exit the child processes properly.
+process.exit(0);
