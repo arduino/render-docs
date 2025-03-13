@@ -60,13 +60,13 @@ You can then call `npx render-docs` to run the command. Alternatively you can in
 wget -q -O - https://apt.llvm.org/llvm-snapshot.gpg.key | gpg --dearmor -o /usr/share/keyrings/llvm-archive-keyring.gpg
 
 # Add the LLVM repository with the GPG keyring
-echo "deb [signed-by=/usr/share/keyrings/llvm-archive-keyring.gpg] http://apt.llvm.org/focal/ llvm-toolchain-focal-9 main" | sudo tee /etc/apt/sources.list.d/llvm.list
+echo "deb [signed-by=/usr/share/keyrings/llvm-archive-keyring.gpg] http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main" | sudo tee /etc/apt/sources.list.d/llvm.list > /dev/null
 
 # Update the package lists
 sudo apt-get -qq update
 
 # Install libclang and other necessary packages
-sudo apt-get -qq install -y libclang1-9 libclang-cpp9
+sudo apt-get install -y libclang1-15 libclang-cpp15
 ```
 
 ## 🧑‍💻 Developer Installation
