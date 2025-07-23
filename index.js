@@ -113,7 +113,7 @@ const moxygenOptions = {
     relativePaths: true,
     accessLevel: commandOptions.accessLevel,
     showAccessModifiers: commandOptions.showAccessModifiers,
-    classes: outputFile.includes("%s"),
+    classes: outputFile != undefined && outputFile.includes("%s"),
     logfile: commandOptions.debug ? MOXYGEN_LOGFILE : undefined
 };
 
@@ -131,6 +131,8 @@ if(outputXML){
     moxygen.logger.init(finalMoxygenOptions);
     console.log("🔨 Generating markdown documentation...")
     moxygen.run(finalMoxygenOptions);
+    // Code continues even before the moxygen run is complete
+    // Ideally we make moxygen run synchronous or wait for it to finish
 }
 
 if(!commandOptions.debug){
